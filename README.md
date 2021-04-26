@@ -5,7 +5,7 @@ Answer Selection is an important subtask of Question Answering tasks. For this l
 methods have outperformed traditional methods. To train a highquality deep answer selection model, it often requires large amounts of labeled data, which is a costly and noise-prone process. Active learning and semi-supervised learning are usually applied in the modelling training procedure to achieve optimal accuracy with fewer labeled training samples. However, traditional active learning methods rely on good uncertainty estimates that are hard to obtain with standard neural networks. And the performance of semi-supervised learning methods are always affected adversely by the quality of the pseudo-labeled data. In this work, we propose a new framework integrating active learning and self-paced learning in training deep answer selection models. This framework proposes an uncertainty quantification method based on Bayesian neural network, which can guide active learning and self-paced learning in the same iterative process of model training. 
 
 ## Publication
-This is the codebase for our 2021 ECAI paper:
+This is the codebase for our 2020 ECAI paper:
 [Combination of Active Learning and Self-Paced Learning for Deep Answer Selection with Bayesian Neural Network](http://ecai2020.eu/papers/449_paper.pdf).
 
 ```
