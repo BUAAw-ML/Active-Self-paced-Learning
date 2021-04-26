@@ -75,7 +75,7 @@ class Loader(object):
             dico_words_train.copy(),
             pretrained,
             list(itertools.chain.from_iterable(
-                [[w.lower() for w in (s[0] + ' ' + s[1]).split()] for s in test_data]  # 样本包含问题和答案
+                [[w.lower() for w in (s[0] + ' ' + s[1]).split()] for s in test_data] 
             )
             ) if not all_embedding else None)
 
