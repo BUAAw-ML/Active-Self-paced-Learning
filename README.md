@@ -31,6 +31,6 @@ In addition, anyone who want to run these codes should download the word embeddi
 We upload a subset of the dataset YahooCQA to run these codes. You can download other datasets of Community-based Question Answering (CQA) and place it at './datasets'.
 
 ## Train and Test
-python main.py
+python run_active_task_seq.py
 
-- The options of the active learning method can be set in 'main.py'. 
+- The options of the active learning method can be set in 'run_active_task_seq.py'. 
