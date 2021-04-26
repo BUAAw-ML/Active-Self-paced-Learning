@@ -29,7 +29,7 @@ def parse_args():
     parser.add_argument('--with_sim_feature', type=bool, default=True, help='whether use sim_feature in deep model')
     parser.add_argument('--double_embedding', type=bool, default=False, help='whether use two kinds of word embedding')
     parser.add_argument('--word_embedding_dim', type=int, default=300, help='')
-    parser.add_argument('--pretrained_word_embedding', default="data/pretrained-word-embedding/glove.6B.300d.txt", help='')
+    parser.add_argument('--pretrained_word_embedding', default="./datasets/word_embedding/glove.6B.300d.txt", help='')
     parser.add_argument('--dropout', type=float, default=0.5, help='')
     parser.add_argument('--dropout2', type=float, default=0.5, help='')
     parser.add_argument('--word_hidden_dim', type=int, default=75, help='')
@@ -52,17 +52,16 @@ def main(args):
         # The config for a task:
         # acquire_method(sub_acquire_method): random(""), no-dete("DASL","DAL","BALD"), dete("coreset","entropy",...)
         {
-            "model_name": "BiLSTM",
-            "group_name": "[2.18-?]BiLSTM+FD+MRR+200+200",
-            "max_performance": 0.80,
-            "data_path": "data/YahooCQA/data-FD/",
-            "acquire_method": "no-dete",
+            "model_name": "BiLSTM", # "BiLSTM" or "CNN"
+            "group_name": "BiLSTM+FD+MRR+200+200", # A custom name for recording the expriment result
+            "data_path": "data/YahooCQA/",
+            "acquire_method": "no-dete", # "no-dete"(Bayesian dropout) or "dete"
             "sub_acquire_method": "DASL",
             "num_acquisitions_round": 37,
             "init_question_num": 40,
             "acquire_question_num_per_round": 40,
             "warm_start_random_seed": 16,
-            "sample_method": "No-Deterministic+DASL2+seed16",
+            "sample_method": "No-Deterministic+DASL+seed16",
         },
     ]
 
@@ -253,19 +252,19 @@ def main(args):
 
 
             #--------------------------Send data for a visual web page------------------------------
-            max_performance = config["max_performance"] if "max_performance" in config else 0
+            # max_performance = config["max_performance"] if "max_performance" in config else 0
 
-            if "group_name" in config:
-                updateLineChart(str(test_performance), sample_method, gp_name = config["group_name"], max = max_performance)
-            else:
-                updateLineChart(str(test_performance), sample_method, max = max_performance)
+            # if "group_name" in config:
+            #     updateLineChart(str(test_performance), sample_method, gp_name = config["group_name"], max = max_performance)
+            # else:
+            #     updateLineChart(str(test_performance), sample_method, max = max_performance)
 
-        #     method_result.append(test_performance)
-        #
-        # print("acquire_method: {}，sub_acquire_method: {}, warm_start_random_seed{}"
-        #       .format(acquire_method, sub_acquire_method, warm_start_random_seed))
-        # print(method_result)
-        # allMethods_results.append(method_result)
+            method_result.append(test_performance)
+        
+        print("acquire_method: {}，sub_acquire_method: {}, warm_start_random_seed{}"
+              .format(acquire_method, sub_acquire_method, warm_start_random_seed))
+        print(method_result)
+        allMethods_results.append(method_result)
 
 
 
